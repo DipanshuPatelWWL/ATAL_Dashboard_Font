@@ -161,7 +161,7 @@ function Review() {
               <div>
                 {review.image && (
                   <img
-                    src={`http://localhost:4000/uploads/${review.image}`}
+                    src={`https://atal-dashboard-backend.onrender.com/uploads/${review.image}`}
                     alt="review"
                     className="w-12 h-12 object-cover rounded"
                   />
