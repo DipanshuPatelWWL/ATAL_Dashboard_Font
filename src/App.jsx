@@ -1,24 +1,84 @@
-import { Routes, Route } from "react-router-dom";
-import AdminLayout from "./layout/AdminLayout";
-import Home from "./page/Home";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./page/login/Login";
+import Unauthorized from "./page/login/Unauthorized";
+import Layout from "./component/Layout";
+import ErrorPage from "./page/errorPage/ErrorPage";
+import AdminDashboard from "./page/admin/AdminDashboard";
+import VenderDashboard from "./page/vender/VenderDashboard";
+import CompanyDashboard from "./page/company/CompanyDashboard";
+import ProtectedRoute from "./component/ProtectedRoute";
+import Register from "./page/login/Register";
 import FAQ from "./page/faq/FAQ";
-import Products from "./page/product/Products";
 import Category from "./page/category/Category";
 import Review from "./page/review/Review";
 import Service from "./page/service/Service";
+import Products from "./page/product/Products";
+import AdminHome from "./page/admin/AdminHome";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<AdminLayout />}>
-        <Route index element={<Home/>} />
-        <Route path="/admin/faq" element={<FAQ />} />
-        <Route path="/admin/category" element={<Category />} />
-        <Route path="/admin/product" element={<Products />} />
-        <Route path="/admin/review" element={<Review/> } />
-        <Route path="/admin/service" element={<Service/> } />
+      {/* ---------- public routes ---------- */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/register"
+        element={
+          <Register />
+        }
+      />
+      <Route path="/unauthorized" element={<Unauthorized />} />
+
+      {/* ---------- protected layout ---------- */}
+      <Route element={<Layout />}>
+        {/* ------------ admin ------------ */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="home" replace />} />
+          <Route path="home" element={<AdminHome />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="category" element={<Category />} />
+          <Route path="product" element={<Products />} />
+          <Route path="review" element={<Review />} />
+          <Route path="service" element={<Service />} />
+        </Route>
+
+        <Route
+          path="/vender-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["vender"]}>
+              <VenderDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/company-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["company"]}>
+              <CompanyDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <ErrorPage />
+          }
+        />
+
+
       </Route>
     </Routes>
+
+
+
+
   );
 }
 
