@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import API from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-const BASE_URL = "https://atal-dashboard-backend.onrender.com/uploads/";
+const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/";
 
 const Products = () => {
   const [open, setOpen] = useState(false);
@@ -70,10 +70,6 @@ const Products = () => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages((prev) => [...prev, ...files]);
-    // setImagePreviews((prev) => [
-    //   ...prev,
-    //   ...files.map((f) => URL.createObjectURL(f)),
-    // ]);
   };
 
   // 🆕 Remove new image before upload
@@ -102,7 +98,6 @@ const Products = () => {
       product_lens_description2: "",
     });
     setImages([]);
-    // setImagePreviews([]);
     setKeptImages([]);
     setLensImage1(null);
     setLensImage2(null);
@@ -118,28 +113,23 @@ const Products = () => {
       subCategoryName: product.subCategoryName || "",
     });
     setImages([]);
-    // setImagePreviews(
-    //   product.product_image_collection?.map(
-    //     (img) => (img.startsWith("http") ? img : BASE_URL + img)
-    //   ) || []
-    // );
     setKeptImages(
       product.product_image_collection?.map((img) =>
-        img.startsWith("http") ? img : BASE_URL + img
+        img.startsWith("http") ? img : Image_Url + img
       ) || []
     );
     setLensImage1(
       product.product_lens_image1
         ? product.product_lens_image1.startsWith("http")
           ? product.product_lens_image1
-          : BASE_URL + product.product_lens_image1
+          : Image_Url + product.product_lens_image1
         : null
     );
     setLensImage2(
       product.product_lens_image2
         ? product.product_lens_image2.startsWith("http")
           ? product.product_lens_image2
-          : BASE_URL + product.product_lens_image2
+          : Image_Url + product.product_lens_image2
         : null
     );
     setEditId(product._id);
@@ -185,7 +175,7 @@ const Products = () => {
       });
 
       // 🆕 send kept existing images
-      payload.append("existingImages", JSON.stringify(keptImages.map(img => img.replace(BASE_URL, ""))));
+      payload.append("existingImages", JSON.stringify(keptImages.map(img => img.replace(Image_Url, ""))));
 
 
       images.forEach((file) => {
@@ -265,7 +255,7 @@ const Products = () => {
                     {pro.product_image_collection.map((img, i) => (
                       <img
                         key={i}
-                        src={img.startsWith("http") ? img : BASE_URL + img}
+                        src={img.startsWith("http") ? img : Image_Url + img}
                         alt="product"
                         className="w-20 h-12 object-cover rounded "
                       />
@@ -443,16 +433,6 @@ const Products = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className="flex gap-2 flex-wrap mt-2">
-                {imagePreviews.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt="preview"
-                    className="w-16 h-16 object-cover rounded"
-                  />
-                ))}
-              </div> */}
 
               {/* Frame Details */}
               <div className="grid grid-cols-2 gap-4">
