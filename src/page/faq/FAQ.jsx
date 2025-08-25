@@ -22,15 +22,15 @@ function FAQ() {
   };
 
   const handleUpdateClick = (faq) => {
-  setModalType("update");
-  setFormData({
-    id: faq._id, // Set the ID for update
-    title: faq.title,
-    description: faq.description,
-    category: faq.category,
-  });
-  setShowModal(true);
-};
+    setModalType("update");
+    setFormData({
+      id: faq._id, // Set the ID for update
+      title: faq.title,
+      description: faq.description,
+      category: faq.category,
+    });
+    setShowModal(true);
+  };
 
 
   const handleCloseModal = () => {
@@ -88,7 +88,7 @@ function FAQ() {
         await API.put(`/updatefaq/${formData.id}`, {
           title: formData.title,
           description: formData.description,
-          category:formData.category,
+          category: formData.category,
         });
         toast.success("FAQ updated successfully");
       }
@@ -104,13 +104,13 @@ function FAQ() {
   return (
     <>
       <div className="p-4">
-      <div className="flex justify-end">
-        <button
-          onClick={handleAddClick}
-          className="bg-green-500 text-white px-3 py-1 text-xl font-semibold rounded-lg mb-4 hover:cursor-pointer flex items-center gap-2"
-        >
-           <FaPlus /> ADD FAQ
-        </button>
+        <div className="flex justify-end">
+          <button
+            onClick={handleAddClick}
+            className="bg-green-500 text-white px-3 py-1 text-xl font-semibold rounded-lg mb-4 hover:cursor-pointer flex items-center gap-2"
+          >
+            <FaPlus /> ADD FAQ
+          </button>
         </div>
         <div className="overflow-x-auto w-full">
           {/* Header Row */}
@@ -163,21 +163,21 @@ function FAQ() {
               )}
             </div>
             <div className="flex gap-2">
-            <div>
-              <button onClick={() => handleUpdateClick(data)}
-                className="bg-blue-500 px-3 py-1 rounded-xl text-white hover:cursor-pointer"
-              >
-                <RiEdit2Fill  className="text-2xl"/>
-              </button>
-            </div>
-            <div>
-              <button
-                className="bg-red-500 px-3 py-1 rounded-xl text-white hover:cursor-pointer"
-                onClick={() => handleDelete(data._id)}
-              >
-                <MdDelete className="text-2xl"/>
-              </button>
-            </div>
+              <div>
+                <button onClick={() => handleUpdateClick(data)}
+                  className="bg-blue-500 px-3 py-1 rounded-xl text-white hover:cursor-pointer"
+                >
+                  <RiEdit2Fill className="text-2xl" />
+                </button>
+              </div>
+              <div>
+                <button
+                  className="bg-red-500 px-3 py-1 rounded-xl text-white hover:cursor-pointer"
+                  onClick={() => handleDelete(data._id)}
+                >
+                  <MdDelete className="text-2xl" />
+                </button>
+              </div>
             </div>
           </div>
         ))}
