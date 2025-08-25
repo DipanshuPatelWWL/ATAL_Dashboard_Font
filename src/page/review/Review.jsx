@@ -3,6 +3,7 @@ import { FaPlus, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import API from "../../API/Api";
 const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/"
+// const Image_Url = "http://localhost:4000/uploads/";
 
 function Review() {
   const [showModal, setShowModal] = useState(false);

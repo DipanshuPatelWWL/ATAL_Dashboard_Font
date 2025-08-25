@@ -4,6 +4,7 @@ import API from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/";
+// const Image_Url = "http://localhost:4000/uploads/";
 
 const Products = () => {
   const [open, setOpen] = useState(false);

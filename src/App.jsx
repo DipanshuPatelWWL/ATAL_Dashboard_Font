@@ -14,6 +14,7 @@ import Review from "./page/review/Review";
 import Service from "./page/service/Service";
 import Products from "./page/product/Products";
 import AdminHome from "./page/admin/AdminHome";
+import EyeCheck from "./page/eyeCheck/Eyecheck";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="product" element={<Products />} />
           <Route path="review" element={<Review />} />
           <Route path="service" element={<Service />} />
+          <Route path="eyeCheck" element={<EyeCheck />} />
         </Route>
 
         <Route
