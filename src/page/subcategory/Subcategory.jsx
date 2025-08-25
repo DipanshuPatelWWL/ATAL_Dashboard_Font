@@ -3,17 +3,18 @@ import Swal from "sweetalert2";
 import API from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-const BASE_URL = "https://atal-dashboard-backend.onrender.com/uploads/";
+const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/";
+// const Image_Url = "http://localhost:4000/uploads/";
 
 const Subcategory = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState([]);
-  const [subcategory,setsubCategory]=useState([]);
+  const [subcategory, setsubCategory] = useState([]);
   const [Image, setImage] = useState(null);
   const [formData, setFormData] = useState({
     cat_sec: "",
     subCategoryName: "",
-    description:""
+    description: ""
   });
   const [editId, setEditId] = useState(null);
 
@@ -53,10 +54,10 @@ const Subcategory = () => {
     setFormData({
       cat_sec: "",
       subCategoryName: "",
-      description:"",
+      description: "",
     });
     setImage(""),
-    setEditId(null);
+      setEditId(null);
     setOpen(true);
   };
 
@@ -94,43 +95,43 @@ const Subcategory = () => {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const payload = new FormData();
-    payload.append("cat_sec", formData.cat_sec);
-    payload.append("subCategoryName", formData.subCategoryName);
-    payload.append("description", formData.description);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = new FormData();
+      payload.append("cat_sec", formData.cat_sec);
+      payload.append("subCategoryName", formData.subCategoryName);
+      payload.append("description", formData.description);
 
-    if (Image) {
-      payload.append("image", Image);
+      if (Image) {
+        payload.append("image", Image);
+      }
+
+      if (editId) {
+        // Update existing subcategory
+        await API.put(`/updatesubcategory/${editId}`, payload, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        Swal.fire("Success", "Subcategory updated successfully!", "success");
+      } else {
+        // Add new subcategory
+        await API.post("/addsubcategory", payload, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        Swal.fire("Success", "Subcategory added successfully!", "success");
+      }
+
+      fetchsubCategories(); // refresh list
+      setOpen(false); // close modal
+    } catch (err) {
+      Swal.fire(
+        "Error",
+        err.response?.data?.message || "Failed to save subcategory",
+        "error"
+      );
     }
+  };
 
-    if (editId) {
-      // Update existing subcategory
-      await API.put(`/updatesubcategory/${editId}`, payload, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      Swal.fire("Success", "Subcategory updated successfully!", "success");
-    } else {
-      // Add new subcategory
-      await API.post("/addsubcategory", payload, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      Swal.fire("Success", "Subcategory added successfully!", "success");
-    }
-
-    fetchsubCategories(); // refresh list
-    setOpen(false); // close modal
-  } catch (err) {
-    Swal.fire(
-      "Error",
-      err.response?.data?.message || "Failed to save subcategory",
-      "error"
-    );
-  }
-};
- 
   return (
     <div className="p-6">
       {/* Header */}
@@ -156,18 +157,18 @@ const handleSubmit = async (e) => {
           </tr>
         </thead>
         <tbody>
-          {subcategory.map((data,index)=>(
-            <tr  className="">
+          {subcategory.map((data, index) => (
+            <tr className="">
               <td className="border px-4 py-2 border-black text-center capitalize">{data.cat_sec}</td>
               <td className="border px-4 py-2 border-black text-center">{data.subCategoryName}</td>
               <td className="border px-4 py-2 border-black text-center">{data.description}</td>
               <td className="border px-4 py-2 border-black text-center">  {data.image && (
-                  <img
-                    src={`http://localhost:4000/uploads/${data.image}`}
-                    alt="review"
-                    className="w-12 h-12 object-cover rounded"
-                  />
-                )}</td>
+                <img
+                  src={`${Image_Url + data.image}`}
+                  alt="review"
+                  className="w-12 h-12 object-cover rounded"
+                />
+              )}</td>
               <td className="border space-x-1 border-black mx-1">
                 <button
                   onClick={() => openEditModal(data)}
@@ -184,7 +185,7 @@ const handleSubmit = async (e) => {
               </td>
             </tr>
           ))}
-            
+
         </tbody>
       </table>
 
@@ -249,7 +250,7 @@ const handleSubmit = async (e) => {
                 placeholder="SubCategory Description"
                 className="w-full border p-2 rounded"
               />
-        
+
               <div>
                 <label className="block text-gray-700">SubCategory Image</label>
                 <input
