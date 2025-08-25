@@ -6,7 +6,7 @@ export default function AdminDashboard() {
     { name: "Home", path: "/admin/home" },
     { name: "FAQ", path: "/admin/faq" },
     { name: "Category", path: "/admin/category" },
-    { name: "Sub-Category", path: "/admin/sub-category" },
+    { name: "Sub-Category", path: "/admin/subCategory" },
     { name: "Product", path: "/admin/product" },
     { name: "Review", path: "/admin/review" },
     { name: "Service", path: "/admin/service" },
