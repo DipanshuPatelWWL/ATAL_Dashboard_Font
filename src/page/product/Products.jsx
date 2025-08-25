@@ -3,7 +3,8 @@ import Swal from "sweetalert2";
 import API from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-const BASE_URL = "https://atal-dashboard-backend.onrender.com/uploads/";
+// const BASE_URL = "https://atal-dashboard-backend.onrender.com/uploads/";
+const BASE_URL = "http://localhost:4000/uploads/"
 
 const Products = () => {
   const [open, setOpen] = useState(false);

@@ -7,6 +7,7 @@ export default function AdminLayout() {
     { name: "Home", path: "/" },
     { name: "FAQ", path: "/admin/faq" },
     { name: "Category", path: "/admin/category" },
+    { name: "Sub-Category", path: "/admin/sub-category" },
     { name: "Product", path: "/admin/product" },
     { name: "Review", path: "/admin/review" },
     { name: "Service", path: "/admin/service" },

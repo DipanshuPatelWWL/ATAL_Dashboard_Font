@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import API from "../../API/Api";
+import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -106,39 +108,43 @@ const Category = () => {
         <h2 className="text-xl font-semibold">Categories</h2>
         <button
           onClick={openAddModal}
-          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 hover:cursor-pointer"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 hover:cursor-pointer flex items-center gap-2"
         >
-          Add Category
+          <FaPlus /> Add Category
         </button>
       </div>
 
       {/* Category List */}
-      <table className="w-full border border-gray-200">
+      <table className="w-full ">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="border px-4 py-2">Category Name</th>
-            <th className="border px-4 py-2">Sub Category</th>
-            <th className="border px-4 py-2">Actions</th>
+          <tr className="">
+            <th className="border border-black px-4 py-2">Category Name</th>
+            <th className="border border-black px-4 py-2">Sub Category</th>
+            <th className="border border-black px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
           {categories.map((cat) => (
-            <tr key={cat._id}>
-              <td className="border px-4 py-2">{cat.categoryName}</td>
-              <td className="border px-4 py-2">
+            <tr key={cat._id} className="border border-black">
+              <td className="border border-black px-4 py-2">
+                {cat.categoryName}
+              </td>
+              <td className="border border-black px-4 py-2">
                 {cat.subCategoryNames?.join(", ") || "—"}
               </td>
-              <td className="border px-4 py-2 space-x-2">
+              <td className=" px-4 py-4 space-x-2 flex justify-center">
                 <button
                   onClick={() => openEditModal(cat)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 flex items-center hover:cursor-pointer"
                 >
+                  <FaEdit />
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(cat._id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 flex items-center hover:cursor-pointer"
                 >
+                  <FaTrash />
                   Delete
                 </button>
               </td>
@@ -165,6 +171,7 @@ const Category = () => {
                   onChange={handleChange}
                   className="w-full border rounded p-2 focus:outline-none focus:border-red-500"
                   required
+                  placeholder="Enter Category Name"
                 />
               </div>
 
@@ -178,7 +185,7 @@ const Category = () => {
                   value={formData.subCategoryNames}
                   onChange={handleChange}
                   className="w-full border rounded p-2 focus:outline-none focus:border-red-500"
-                  rows="3"
+                  rows="2"
                   placeholder="Enter subcategories separated by commas"
                 />
               </div>
@@ -197,9 +204,9 @@ const Category = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-4xl hover:text-red-600 hover:cursor-pointer"
             >
-              ✕
+              <IoIosCloseCircle />
             </button>
           </div>
         </div>
