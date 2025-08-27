@@ -11,6 +11,7 @@ export default function AdminDashboard() {
     { name: "Review", path: "/admin/review" },
     { name: "Service", path: "/admin/service" },
     { name: "Eye Check", path: "/admin/eyeCheck" },
+    { name: "Vendor", path: "/admin/vendor" },
   ];
 
   return (

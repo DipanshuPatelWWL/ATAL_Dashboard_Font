@@ -6,8 +6,7 @@ const Layout = () => (
     <>
         <Navbar />
         <div className="container-fluid">
-            <div className="col-md-10 col-12 p-3">
-                {/* All nested routes render here */}
+            <div>
                 <Outlet />
             </div>
         </div>

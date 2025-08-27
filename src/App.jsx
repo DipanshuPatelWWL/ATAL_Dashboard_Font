@@ -7,7 +7,6 @@ import AdminDashboard from "./page/admin/AdminDashboard";
 import VenderDashboard from "./page/vender/VenderDashboard";
 import CompanyDashboard from "./page/company/CompanyDashboard";
 import ProtectedRoute from "./component/ProtectedRoute";
-import Register from "./page/login/Register";
 import FAQ from "./page/faq/FAQ";
 import Category from "./page/category/Category";
 import Review from "./page/review/Review";
@@ -16,6 +15,10 @@ import Subcategory from "./page/subcategory/Subcategory";
 import Products from "./page/product/Products";
 import AdminHome from "./page/admin/AdminHome";
 import EyeCheck from "./page/eyeCheck/Eyecheck";
+import VendorHome from "./page/vender/VendorHome";
+import VendorRegistrationForm from "./page/vender/VendorRegistrationForm";
+import CompanyRegistrationForm from "./page/company/CompanyRegister";
+import VendorPage from "./page/vender/VendorPage";
 
 function App() {
   return (
@@ -23,14 +26,7 @@ function App() {
       {/* ---------- public routes ---------- */}
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
-      <Route
-        path="/register"
-        element={
-          <Register />
-        }
-      />
       <Route path="/unauthorized" element={<Unauthorized />} />
-
       {/* ---------- protected layout ---------- */}
       <Route element={<Layout />}>
         {/* ------------ admin ------------ */}
@@ -51,16 +47,26 @@ function App() {
           <Route path="review" element={<Review />} />
           <Route path="service" element={<Service />} />
           <Route path="eyeCheck" element={<EyeCheck />} />
+          <Route path="vendor" element={<VendorPage />} />
+          <Route path="register" element={<VendorRegistrationForm/>} /> 
+          <Route path="company" element={<CompanyRegistrationForm/>} /> 
         </Route>
 
         <Route
-          path="/vender-dashboard"
+          path="/vender"
           element={
             <ProtectedRoute allowedRoles={["vender"]}>
               <VenderDashboard />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="home" element={<VendorHome />} />
+          <Route path="product" element={<VendorHome />} />
+          <Route path="order" element={<VendorHome />} />
+          <Route path="profile" element={<VendorHome />} />
+          <Route path="faq" element={<VendorHome />} />
+        </Route>
+
         <Route
           path="/company-dashboard"
           element={
@@ -69,20 +75,10 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="*"
-          element={
-            <ErrorPage />
-          }
-        />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
-
-
-
-
   );
 }
 
 export default App;
-

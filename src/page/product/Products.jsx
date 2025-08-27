@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import API from "../../API/Api";
+import API, { IMAGE_URL } from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-
-const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/";
-// const Image_Url = "http://localhost:4000/uploads/";
-
 
 const Products = () => {
   const [open, setOpen] = useState(false);
@@ -118,21 +114,21 @@ const Products = () => {
     setImages([]);
     setKeptImages(
       product.product_image_collection?.map((img) =>
-        img.startsWith("http") ? img : Image_Url + img
+        img.startsWith("http") ? img : IMAGE_URL + img
       ) || []
     );
     setLensImage1(
       product.product_lens_image1
         ? product.product_lens_image1.startsWith("http")
           ? product.product_lens_image1
-          : Image_Url + product.product_lens_image1
+          : IMAGE_URL + product.product_lens_image1
         : null
     );
     setLensImage2(
       product.product_lens_image2
         ? product.product_lens_image2.startsWith("http")
           ? product.product_lens_image2
-          : Image_Url + product.product_lens_image2
+          : IMAGE_URL + product.product_lens_image2
         : null
     );
     setEditId(product._id);
@@ -178,7 +174,7 @@ const Products = () => {
       });
 
       // 🆕 send kept existing images
-      payload.append("existingImages", JSON.stringify(keptImages.map(img => img.replace(Image_Url, ""))));
+      payload.append("existingImages", JSON.stringify(keptImages.map(img => img.replace(IMAGE_URL, ""))));
 
 
       images.forEach((file) => {
@@ -258,7 +254,7 @@ const Products = () => {
                     {pro.product_image_collection.map((img, i) => (
                       <img
                         key={i}
-                        src={img.startsWith("http") ? img : Image_Url + img}
+                        src={img.startsWith("http") ? img : IMAGE_URL + img}
                         alt="product"
                         className="w-20 h-12 object-cover rounded "
                       />

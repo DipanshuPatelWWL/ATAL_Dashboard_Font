@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import API from "../../API/Api";
+import API, { IMAGE_URL } from "../../API/Api";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/";
-// const Image_Url = "http://localhost:4000/uploads/";
 
 const Subcategory = () => {
   const [open, setOpen] = useState(false);
@@ -164,7 +162,7 @@ const Subcategory = () => {
               <td className="border px-4 py-2 border-black text-center">{data.description}</td>
               <td className="border px-4 py-2 border-black text-center">  {data.image && (
                 <img
-                  src={`${Image_Url + data.image}`}
+                  src={`${IMAGE_URL + data.image}`}
                   alt="review"
                   className="w-12 h-12 object-cover rounded"
                 />

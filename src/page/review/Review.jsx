@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
-import API from "../../API/Api";
-const Image_Url = "https://atal-dashboard-backend.onrender.com/uploads/"
-// const Image_Url = "http://localhost:4000/uploads/";
+import API, { IMAGE_URL } from "../../API/Api";
 
 function Review() {
   const [showModal, setShowModal] = useState(false);
@@ -163,7 +161,7 @@ function Review() {
               <div>
                 {review.image && (
                   <img
-                    src={`${Image_Url + review.image}`}
+                    src={`${IMAGE_URL + review.image}`}
                     alt="review"
                     className="w-12 h-12 object-cover rounded"
                   />
