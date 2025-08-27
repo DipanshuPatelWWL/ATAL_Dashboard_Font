@@ -7,4 +7,4 @@ const API = axios.create({
 })
 export default API;
 // export const IMAGE_URL = "http://localhost:4000/uploads/";
-export const IMAGE_URL = "https://atal-dashboard-backend.onrender.com/uploads"
+export const IMAGE_URL = "https://atal-dashboard-backend.onrender.com/uploads/";
