@@ -14,6 +14,9 @@ export default function AdminDashboard() {
     { name: "Vendor", path: "/admin/vendor" },
     { name: "Company", path: "/admin/company" },
     { name: "Register", path: "/admin/register" },
+    { name: "Testimonial", path: "/admin/testimonials" },
+    { name: "eyewearTips", path: "/admin/eyewearTips" },
+
   ];
 
   return (

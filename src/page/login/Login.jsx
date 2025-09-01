@@ -28,7 +28,7 @@ const Login = () => {
     toast: true,
     position: "top-right",
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2000,
     timerProgressBar: true,
   });
 
@@ -157,14 +157,14 @@ const Login = () => {
                       step === 1
                         ? `<input type="email" id="email" class="swal2-input" placeholder="Enter your email"/>`
                         : step === 2
-                        ? `<input type="text" id="otp" class="swal2-input" placeholder="Enter OTP"/>`
-                        : `<input type="password" id="newPassword" class="swal2-input" placeholder="Enter new password"/>`,
+                          ? `<input type="text" id="otp" class="swal2-input" placeholder="Enter OTP"/>`
+                          : `<input type="password" id="newPassword" class="swal2-input" placeholder="Enter new password"/>`,
                     confirmButtonText:
                       step === 1
                         ? "Send OTP"
                         : step === 2
-                        ? "Verify OTP"
-                        : "Reset Password",
+                          ? "Verify OTP"
+                          : "Reset Password",
                     showCancelButton: true,
                     preConfirm: () => {
                       if (step === 1) {
