@@ -14,7 +14,7 @@ const Navbar = () => {
                     <div className="items-center space-x-6 mt-4">
                         <span className="text-gray-600 text-xl">Hello, {user.name}</span>
                         <button onClick={logout}
-                            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xl">
+                            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xl hover:cursor-pointer">
                             Logout
                         </button>
                     </div>

@@ -16,9 +16,10 @@ import Products from "./page/product/Products";
 import AdminHome from "./page/admin/AdminHome";
 import EyeCheck from "./page/eyeCheck/Eyecheck";
 import VendorHome from "./page/vender/VendorHome";
-import VendorRegistrationForm from "./page/vender/VendorRegistrationForm";
+// import VendorRegistrationForm from "./page/vender/VendorRegistrationForm";
 import CompanyRegistrationForm from "./page/company/CompanyRegister";
 import VendorPage from "./page/vender/VendorPage";
+import Register from "./page/login/Register";
 
 function App() {
   return (
@@ -48,7 +49,8 @@ function App() {
           <Route path="service" element={<Service />} />
           <Route path="eyeCheck" element={<EyeCheck />} />
           <Route path="vendor" element={<VendorPage />} />
-          <Route path="register" element={<VendorRegistrationForm/>} /> 
+          {/* <Route path="register" element={<VendorRegistrationForm/>} />  */}
+          <Route path="register" element={<Register/>} />
           <Route path="company" element={<CompanyRegistrationForm/>} /> 
         </Route>
 
@@ -60,6 +62,7 @@ function App() {
             </ProtectedRoute>
           }
         >
+        <Route index element={<Navigate to="home" replace />} />
           <Route path="home" element={<VendorHome />} />
           <Route path="product" element={<VendorHome />} />
           <Route path="order" element={<VendorHome />} />
