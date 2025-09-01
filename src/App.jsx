@@ -19,6 +19,8 @@ import VendorHome from "./page/vender/VendorHome";
 import VendorRegistrationForm from "./page/vender/VendorRegistrationForm";
 import CompanyRegistrationForm from "./page/company/CompanyRegister";
 import VendorPage from "./page/vender/VendorPage";
+import Testimonials from "./page/testimonials/Testimonials";
+import EyewearTips from "./page/eyewearTips/EyewearTips";
 
 function App() {
   return (
@@ -48,8 +50,10 @@ function App() {
           <Route path="service" element={<Service />} />
           <Route path="eyeCheck" element={<EyeCheck />} />
           <Route path="vendor" element={<VendorPage />} />
-          <Route path="register" element={<VendorRegistrationForm/>} /> 
-          <Route path="company" element={<CompanyRegistrationForm/>} /> 
+          <Route path="register" element={<VendorRegistrationForm />} />
+          <Route path="company" element={<CompanyRegistrationForm />} />
+          <Route path="testimonials" element={<Testimonials />} />
+          <Route path="eyewearTips" element={<EyewearTips />} />
         </Route>
 
         <Route
