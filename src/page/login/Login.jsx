@@ -40,7 +40,7 @@ const Login = () => {
       Toast.fire({ icon: "success", title: "Login successful!" });
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser?.role === "admin") navigate("/admin/home");
-      if (storedUser?.role === "vender") navigate("/vender/home");
+      if (storedUser?.role === "vendor") navigate("/vendor/home");
       if (storedUser?.role === "company") navigate("/company-dashboard");
     } else {
       Toast.fire({ icon: "error", title: "Invalid email or password" });

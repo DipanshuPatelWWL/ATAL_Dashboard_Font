@@ -13,7 +13,8 @@ const ProtectedRoute = ({ allowedRoles = [], children }) => {
     if (loading) return null; // or a spinner
 
     /* 2️⃣  Not logged‑in → login page */
-    if (!user) return <Navigate to="/login" replace />;
+    if (!user) return <Navigate to="/loginNew" replace />;
+    // if (!user) return <Navigate to="/login" replace />;
 
     /* 3️⃣  Role mismatch → unauthorized page  (NOTE: lowercase path) */
     if (allowedRoles.length && !allowedRoles.includes(user.role)) {

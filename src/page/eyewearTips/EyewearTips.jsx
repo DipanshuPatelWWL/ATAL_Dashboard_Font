@@ -3,6 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 import API, { IMAGE_URL } from "../../API/Api";
+import Swal from "sweetalert2";
 
 function EyewearTips() {
     const [showModal, setShowModal] = useState(false);
@@ -63,12 +64,22 @@ function EyewearTips() {
                 await API.post("/addEyewearTips", formDataToSend, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
-                alert("EyewearTips created successfully!");
+                Swal.fire({
+                    title: "Success!",
+                    text: "EyewearTips created successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
             } else {
                 await API.put(`/updateEyewearTips/${formData.id}`, formDataToSend, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
-                alert("EyewearTips updated successfully!");
+                Swal.fire({
+                    title: "Success!",
+                    text: "EyewearTips updated successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
             }
 
             setShowModal(false);
@@ -93,13 +104,38 @@ function EyewearTips() {
 
     // Delete API
     const handleDelete = async (id) => {
-        try {
-            await API.delete(`/deleteEyewearTips/${id}`);
-            fetchEyewearTips();
-            alert("EyewearTips deleted successfully!");
-        } catch (error) {
-            console.error(error);
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to undo this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await API.delete(`/deleteEyewearTips/${id}`);
+                    fetchEyewearTips();
+
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "EyewearTips deleted successfully!",
+                        icon: "success",
+                        timer: 2000,
+                        showConfirmButton: false,
+                    });
+                } catch (error) {
+                    console.error(error);
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong while deleting.",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                    });
+                }
+            }
+        });
     };
 
     return (

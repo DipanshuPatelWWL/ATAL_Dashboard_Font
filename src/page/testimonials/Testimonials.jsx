@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 import API, { IMAGE_URL } from '../../API/Api';
 
-function Testimonials() {
+function Testimonial() {
     const [showModal, setShowModal] = useState(false)
     const [modalType, setModalType] = useState("add")
     const [formData, setFormData] = useState({
@@ -100,7 +100,6 @@ function Testimonials() {
                 });
                 alert("Testimonial updated successfully");
             }
-            console.log("formdatatosned", formDataToSend);
 
 
             setShowModal(false);
@@ -140,7 +139,8 @@ function Testimonials() {
                             <p>{data.description}</p>
                             {data.image && (
                                 <img
-                                    src={data.image.startsWith("http") ? data.image : `${IMAGE_URL + data.image}`}
+                                    src={data.image.startsWith("http") ? data.image :
+                                        `${IMAGE_URL + data.image}`}
                                     alt={data.name}
                                     className="w-16 h-16 object-cover rounded"
                                 />
@@ -259,4 +259,4 @@ function Testimonials() {
     )
 }
 
-export default Testimonials
+export default Testimonial

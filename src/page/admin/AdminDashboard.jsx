@@ -13,9 +13,10 @@ export default function AdminDashboard() {
     { name: "Eye Check", path: "/admin/eyeCheck" },
     { name: "Vendor", path: "/admin/vendor" },
     { name: "Company", path: "/admin/company" },
-    { name: "Register", path: "/admin/register" },
+    // { name: "Register", path: "/admin/register" },
     { name: "Testimonial", path: "/admin/testimonials" },
-    { name: "eyewearTips", path: "/admin/eyewearTips" },
+    { name: "Eyewear Tips", path: "/admin/eyewearTips" },
+    { name: "Inquiries", path: "/admin/inquiries" }
 
   ];
 

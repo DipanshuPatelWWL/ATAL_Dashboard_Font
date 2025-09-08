@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import API from "../../API/Api";
 
 function VendorPage() {
@@ -8,8 +6,7 @@ function VendorPage() {
   const getallvendor = async () => {
     try {
       const res = await API.get("/allvendor");
-      setvendor(res.data.vendors);
-      console.log(res.data.vendors);
+      setvendor(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -21,13 +18,16 @@ function VendorPage() {
   return (
     <>
       <div className="p-6">
-      <div className="flex justify-between">
-        <h2 className="text-2xl font-bold mb-6">Vendor Details</h2>
-        <Link to="/admin/register">
-        <button className="bg-green-500 text-white text-xl font-semibold py-2 px-3 rounded-lg hover:cursor-pointer hover:bg-green-700 flex items-center gap-2">
-          <FaPlus /> ADD VENDOR
-        </button>
-      </Link></div>
+        <div className="flex justify-between">
+          <h2 className="text-2xl font-bold mb-6">Vendor Details</h2>
+          {/* <Link to="/admin/register">
+            <button className="bg-green-500 text-white text-xl font-semibold py-2 px-3 rounded-lg hover:cursor-pointer hover:bg-green-700 flex items-center gap-2">
+              <FaPlus /> ADD VENDOR
+            </button>
+          </Link>
+          */}
+
+        </div>
         <div className="">
           {vendor.map((data, index) => (
             <div

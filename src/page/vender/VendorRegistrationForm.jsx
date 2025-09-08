@@ -108,7 +108,6 @@ export default function VendorRegistrationForm() {
       );
 
       alert("Vendor registered successfully!");
-      console.log(res.data);
 
       // Reset form
       setFormData({
