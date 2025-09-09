@@ -4,11 +4,11 @@ import { Link, Outlet } from 'react-router-dom';
 const VenderDashboard = () => {
 
     const menuItems = [
-        { name: "Home", path: "/vender/home" },
-        { name: "Product", path: "/vender/product" },
-        { name: "Order", path: "/vender/order" },
-        { name: "Profile", path: "/vender/profile" },
-        { name: "FAQ", path: "/vender/faq" },
+        { name: "Home", path: "/vendor/home" },
+        { name: "Product", path: "/vendor/product" },
+        { name: "Order", path: "/vendor/order" },
+        { name: "Profile", path: "/vendor/profile" },
+        { name: "FAQ", path: "/vendor/faq" },
     ];
 
     return (

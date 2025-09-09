@@ -16,7 +16,7 @@ const Subcategory = () => {
   });
   const [editId, setEditId] = useState(null);
 
-  // ✅ Fetch categories
+  // Fetch categories
   const fetchCategories = async () => {
     try {
       const res = await API.get("/getcategories");
@@ -30,7 +30,6 @@ const Subcategory = () => {
     try {
       const res = await API.get("/getallsubcategory");
       setsubCategory(res.data.subcategory || []);
-      console.log(res.data.subcategory);
     } catch (err) {
       Swal.fire("Error", "Failed to fetch categories", "error");
     }
@@ -59,7 +58,7 @@ const Subcategory = () => {
     setOpen(true);
   };
 
-  // ✅ Open Edit Modal
+  // Open Edit Modal
   const openEditModal = (product) => {
     setFormData({
       ...product,
@@ -156,7 +155,7 @@ const Subcategory = () => {
         </thead>
         <tbody>
           {subcategory.map((data, index) => (
-            <tr className="">
+            <tr key={index}>
               <td className="border px-4 py-2 border-black text-center capitalize">{data.cat_sec}</td>
               <td className="border px-4 py-2 border-black text-center">{data.subCategoryName}</td>
               <td className="border px-4 py-2 border-black text-center">{data.description}</td>

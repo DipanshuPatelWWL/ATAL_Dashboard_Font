@@ -74,7 +74,6 @@ export default function CompanyRegistrationForm() {
       });
 
       alert("Company registered successfully!");
-      console.log(res.data);
     } catch (error) {
       console.error(error);
       alert("Error registering company");

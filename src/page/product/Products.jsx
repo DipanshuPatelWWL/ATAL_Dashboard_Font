@@ -34,7 +34,7 @@ const Products = () => {
   });
   const [editId, setEditId] = useState(null);
 
-  // ✅ Fetch products
+  // Fetch products
   const fetchProducts = async () => {
     try {
       const res = await API.get("/getAllProduct");
@@ -44,7 +44,7 @@ const Products = () => {
     }
   };
 
-  // ✅ Fetch categories
+  // Fetch categories
   const fetchCategories = async () => {
     try {
       const res = await API.get("/getcategories");
@@ -71,7 +71,7 @@ const Products = () => {
     setImages((prev) => [...prev, ...files]);
   };
 
-  // 🆕 Remove new image before upload
+  // Remove new image before upload
   const removeNewImage = (idx) => {
     setImages((prev) => prev.filter((_, i) => i !== idx));
   };
@@ -104,7 +104,7 @@ const Products = () => {
     setOpen(true);
   };
 
-  // ✅ Open Edit Modal
+  // Open Edit Modal
   const openEditModal = (product) => {
     setFormData({
       ...product,
@@ -136,7 +136,7 @@ const Products = () => {
   };
 
 
-  // 🆕 Remove existing image
+  // Remove existing image
   const removeExistingImage = (idx) => {
     setKeptImages((prev) => prev.filter((_, i) => i !== idx));
   };
@@ -173,7 +173,7 @@ const Products = () => {
         if (value) payload.append(key, value);
       });
 
-      // 🆕 send kept existing images
+      // send kept existing images
       payload.append("existingImages", JSON.stringify(keptImages.map(img => img.replace(IMAGE_URL, ""))));
 
 
@@ -393,7 +393,7 @@ const Products = () => {
                 onChange={handleImageChange}
                 className="w-full border p-2 rounded"
               />
-              {/* 🆕 Show kept old images */}
+              {/* Show kept old images */}
               <div className="flex gap-2 flex-wrap mt-2">
                 {keptImages.map((img, idx) => (
                   <div key={idx} className="relative">
@@ -413,7 +413,7 @@ const Products = () => {
                 ))}
               </div>
 
-              {/* 🆕 Show new uploaded previews */}
+              {/* Show new uploaded previews */}
               <div className="flex gap-2 flex-wrap mt-2">
                 {images.map((file, idx) => (
                   <div key={idx} className="relative">

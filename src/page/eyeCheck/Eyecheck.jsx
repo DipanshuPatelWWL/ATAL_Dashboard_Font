@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 // import { toast } from "react-toastify";
 import API from '../../API/Api';
+import Swal from 'sweetalert2';
 
 const EyeCheck = () => {
     const [showModal, setShowModal] = useState(false)
@@ -76,13 +77,23 @@ const EyeCheck = () => {
 
             if (modalType === "add") {
                 await API.post("/addEyecheck", formData)
-                alert("Eyecheck create successfully")
+                Swal.fire({
+                    title: "Success!",
+                    text: "Eyecheck created successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
             } else {
                 await API.put(`/updateEyecheck/${formData.id}`, {
                     heading: formData.heading,
                     description: formData.description
                 })
-                alert("Eyecheck updated successfully")
+                Swal.fire({
+                    title: "Success!",
+                    text: "Eyecheck updated successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
             }
             setShowModal(false);
             setFormData({ description: "", heading: "" })
